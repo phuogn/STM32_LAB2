@@ -20,9 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-#include "Exc3.h"
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
+#include "Exc4.h"
 #include "timer.h"
 /* USER CODE END Includes */
 
@@ -95,14 +93,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Exc3_init();
-  setTimer(0,500);
+  Exc4_init();
+  setTimer(0,1000);
   setTimer(1,1000);
   int index = 0;
   while (1)
   {
 	  if (timer_flag[0] == 1) {
-		  setTimer(0,500);
+		  setTimer(0,1000);
 		  update7SEG(index++);
 	  }
 	  if (timer_flag[1] == 1) {

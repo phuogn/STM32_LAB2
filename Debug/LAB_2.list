@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020020  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00008a03  00000000  00000000  00020049  2**0
+ 12 .debug_info   00008a02  00000000  00000000  00020049  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000176d  00000000  00000000  00028a4c  2**0
+ 13 .debug_abbrev 0000176d  00000000  00000000  00028a4b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000990  00000000  00000000  0002a1c0  2**3
+ 14 .debug_aranges 00000990  00000000  00000000  0002a1b8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000008c8  00000000  00000000  0002ab50  2**3
+ 15 .debug_ranges 000008c8  00000000  00000000  0002ab48  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001660a  00000000  00000000  0002b418  2**0
+ 16 .debug_macro  0001660a  00000000  00000000  0002b410  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000ad17  00000000  00000000  00041a22  2**0
+ 17 .debug_line   0000ad17  00000000  00000000  00041a1a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00081fdb  00000000  00000000  0004c739  2**0
+ 18 .debug_str    00081fdb  00000000  00000000  0004c731  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000ce714  2**0
+ 19 .comment      00000053  00000000  00000000  000ce70c  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000026b8  00000000  00000000  000ce768  2**2
+ 20 .debug_frame  000026b8  00000000  00000000  000ce760  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -76,77 +76,77 @@ Disassembly of section .text:
  8000144:	20000024 	.word	0x20000024
  8000148:	08001e0c 	.word	0x08001e0c
 
-0800014c <Exc3_init>:
+0800014c <Exc4_init>:
  *      Author: MSIFPT
  */
-#include "Exc3.h"
+#include "Exc4.h"
 
 int LED = 1;
-void Exc3_init() {
+void Exc4_init() {
  800014c:	b580      	push	{r7, lr}
  800014e:	af00      	add	r7, sp, #0
 	HAL_GPIO_WritePin(GPIOB, SEG0_Pin, SET);
  8000150:	2201      	movs	r2, #1
  8000152:	2101      	movs	r1, #1
- 8000154:	4820      	ldr	r0, [pc, #128]	; (80001d8 <Exc3_init+0x8c>)
+ 8000154:	4820      	ldr	r0, [pc, #128]	; (80001d8 <Exc4_init+0x8c>)
  8000156:	f000 fe43 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG1_Pin, SET);
  800015a:	2201      	movs	r2, #1
  800015c:	2102      	movs	r1, #2
- 800015e:	481e      	ldr	r0, [pc, #120]	; (80001d8 <Exc3_init+0x8c>)
+ 800015e:	481e      	ldr	r0, [pc, #120]	; (80001d8 <Exc4_init+0x8c>)
  8000160:	f000 fe3e 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG2_Pin, SET);
  8000164:	2201      	movs	r2, #1
  8000166:	2104      	movs	r1, #4
- 8000168:	481b      	ldr	r0, [pc, #108]	; (80001d8 <Exc3_init+0x8c>)
+ 8000168:	481b      	ldr	r0, [pc, #108]	; (80001d8 <Exc4_init+0x8c>)
  800016a:	f000 fe39 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG3_Pin, SET);
  800016e:	2201      	movs	r2, #1
  8000170:	2108      	movs	r1, #8
- 8000172:	4819      	ldr	r0, [pc, #100]	; (80001d8 <Exc3_init+0x8c>)
+ 8000172:	4819      	ldr	r0, [pc, #100]	; (80001d8 <Exc4_init+0x8c>)
  8000174:	f000 fe34 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG4_Pin, SET);
  8000178:	2201      	movs	r2, #1
  800017a:	2110      	movs	r1, #16
- 800017c:	4816      	ldr	r0, [pc, #88]	; (80001d8 <Exc3_init+0x8c>)
+ 800017c:	4816      	ldr	r0, [pc, #88]	; (80001d8 <Exc4_init+0x8c>)
  800017e:	f000 fe2f 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG5_Pin, SET);
  8000182:	2201      	movs	r2, #1
  8000184:	2120      	movs	r1, #32
- 8000186:	4814      	ldr	r0, [pc, #80]	; (80001d8 <Exc3_init+0x8c>)
+ 8000186:	4814      	ldr	r0, [pc, #80]	; (80001d8 <Exc4_init+0x8c>)
  8000188:	f000 fe2a 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOB, SEG6_Pin, SET);
  800018c:	2201      	movs	r2, #1
  800018e:	2140      	movs	r1, #64	; 0x40
- 8000190:	4811      	ldr	r0, [pc, #68]	; (80001d8 <Exc3_init+0x8c>)
+ 8000190:	4811      	ldr	r0, [pc, #68]	; (80001d8 <Exc4_init+0x8c>)
  8000192:	f000 fe25 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
  8000196:	2201      	movs	r2, #1
  8000198:	2140      	movs	r1, #64	; 0x40
- 800019a:	4810      	ldr	r0, [pc, #64]	; (80001dc <Exc3_init+0x90>)
+ 800019a:	4810      	ldr	r0, [pc, #64]	; (80001dc <Exc4_init+0x90>)
  800019c:	f000 fe20 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
  80001a0:	2201      	movs	r2, #1
  80001a2:	2180      	movs	r1, #128	; 0x80
- 80001a4:	480d      	ldr	r0, [pc, #52]	; (80001dc <Exc3_init+0x90>)
+ 80001a4:	480d      	ldr	r0, [pc, #52]	; (80001dc <Exc4_init+0x90>)
  80001a6:	f000 fe1b 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
  80001aa:	2201      	movs	r2, #1
  80001ac:	f44f 7180 	mov.w	r1, #256	; 0x100
- 80001b0:	480a      	ldr	r0, [pc, #40]	; (80001dc <Exc3_init+0x90>)
+ 80001b0:	480a      	ldr	r0, [pc, #40]	; (80001dc <Exc4_init+0x90>)
  80001b2:	f000 fe15 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
  80001b6:	2201      	movs	r2, #1
  80001b8:	f44f 7100 	mov.w	r1, #512	; 0x200
- 80001bc:	4807      	ldr	r0, [pc, #28]	; (80001dc <Exc3_init+0x90>)
+ 80001bc:	4807      	ldr	r0, [pc, #28]	; (80001dc <Exc4_init+0x90>)
  80001be:	f000 fe0f 	bl	8000de0 <HAL_GPIO_WritePin>
 	HAL_GPIO_WritePin(GPIOA, DOT_Pin, SET);
  80001c2:	2201      	movs	r2, #1
  80001c4:	2110      	movs	r1, #16
- 80001c6:	4805      	ldr	r0, [pc, #20]	; (80001dc <Exc3_init+0x90>)
+ 80001c6:	4805      	ldr	r0, [pc, #20]	; (80001dc <Exc4_init+0x90>)
  80001c8:	f000 fe0a 	bl	8000de0 <HAL_GPIO_WritePin>
 	LED = 1;
- 80001cc:	4b04      	ldr	r3, [pc, #16]	; (80001e0 <Exc3_init+0x94>)
+ 80001cc:	4b04      	ldr	r3, [pc, #16]	; (80001e0 <Exc4_init+0x94>)
  80001ce:	2201      	movs	r2, #1
  80001d0:	601a      	str	r2, [r3, #0]
 }
@@ -439,10 +439,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Exc3_init();
- 80003c8:	f7ff fec0 	bl	800014c <Exc3_init>
-  setTimer(0,500);
- 80003cc:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
+  Exc4_init();
+ 80003c8:	f7ff fec0 	bl	800014c <Exc4_init>
+  setTimer(0,1000);
+ 80003cc:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
  80003d0:	2000      	movs	r0, #0
  80003d2:	f000 f9a5 	bl	8000720 <setTimer>
   setTimer(1,1000);
@@ -459,8 +459,8 @@ int main(void)
  80003e6:	681b      	ldr	r3, [r3, #0]
  80003e8:	2b01      	cmp	r3, #1
  80003ea:	d10a      	bne.n	8000402 <main+0x56>
-		  setTimer(0,500);
- 80003ec:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
+		  setTimer(0,1000);
+ 80003ec:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
  80003f0:	2000      	movs	r0, #0
  80003f2:	f000 f995 	bl	8000720 <setTimer>
 		  update7SEG(index++);

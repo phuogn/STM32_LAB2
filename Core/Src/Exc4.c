@@ -4,10 +4,10 @@
  *  Created on: Sep 23, 2024
  *      Author: MSIFPT
  */
-#include "Exc3.h"
+#include "Exc4.h"
 
 int LED = 1;
-void Exc3_init() {
+void Exc4_init() {
 	HAL_GPIO_WritePin(GPIOB, SEG0_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG1_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG2_Pin, SET);
