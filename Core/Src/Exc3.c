@@ -4,10 +4,10 @@
  *  Created on: Sep 23, 2024
  *      Author: MSIFPT
  */
-#include "Exc2.h"
+#include "Exc3.h"
 
 int LED = 1;
-void Exc2_init() {
+void Exc3_init() {
 	HAL_GPIO_WritePin(GPIOB, SEG0_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG1_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG2_Pin, SET);
@@ -23,32 +23,32 @@ void Exc2_init() {
 	LED = 1;
 }
 
-void Exc2_run() {
-	if (LED == 1) {
-		HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
-		HAL_GPIO_WritePin(GPIOA, EN0_Pin, RESET);
-		display7SEG(1);
-		LED = 2;
-	}
-	else if(LED == 2) {
-		HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
-		HAL_GPIO_WritePin(GPIOA, EN1_Pin, RESET);
-		display7SEG(2);
-		LED = 3;
-	}
-	else if (LED == 3) {
-		HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
-		HAL_GPIO_WritePin(GPIOA, EN2_Pin, RESET);
-		display7SEG(3);
-		LED = 4;
-	}
-	else {
-		HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
-		HAL_GPIO_WritePin(GPIOA, EN3_Pin, RESET);
-		display7SEG(0);
-		LED = 1;
-	}
-}
+//void Exc3_run() {
+//	if (LED == 1) {
+//		HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
+//		HAL_GPIO_WritePin(GPIOA, EN0_Pin, RESET);
+//		display7SEG(1);
+//		LED = 2;
+//	}
+//	else if(LED == 2) {
+//		HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
+//		HAL_GPIO_WritePin(GPIOA, EN1_Pin, RESET);
+//		display7SEG(2);
+//		LED = 3;
+//	}
+//	else if (LED == 3) {
+//		HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
+//		HAL_GPIO_WritePin(GPIOA, EN2_Pin, RESET);
+//		display7SEG(3);
+//		LED = 4;
+//	}
+//	else {
+//		HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
+//		HAL_GPIO_WritePin(GPIOA, EN3_Pin, RESET);
+//		display7SEG(0);
+//		LED = 1;
+//	}
+//}
 
 void display7SEG(int num) {
 	// Mảng lưu giá trị các đoạn cho các số từ 0 đến 9
@@ -77,3 +77,35 @@ void display7SEG(int num) {
 void DOT_run() {
 	HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
 }
+
+const int MAX_LED = 4;
+int index_led = 0;
+int led_buffer [4] = {1 , 2 , 3 , 4};
+
+void update7SEG ( int index ) {
+	switch ( index ) {
+		case 0:
+			display7SEG(led_buffer[0]);
+			HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, EN0_Pin, RESET);
+			break ;
+		case 1:
+			display7SEG(led_buffer[1]);
+			HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, EN1_Pin, RESET);
+			break ;
+		case 2:
+			display7SEG(led_buffer[2]);
+			HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, EN2_Pin, RESET);
+			break ;
+		case 3:
+			display7SEG(led_buffer[3]);
+			HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, EN3_Pin, RESET);
+			break ;
+		default :
+			break ;
+	}
+}
+

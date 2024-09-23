@@ -12,7 +12,8 @@
 
 #endif /* SRC_EXC1_H_ */
 
-void Exc2_init();
-void Exc2_run();
+void Exc3_init();
+//void Exc3_run();
 void display7SEG(int num);
 void DOT_run();
+void update7SEG ( int index );
