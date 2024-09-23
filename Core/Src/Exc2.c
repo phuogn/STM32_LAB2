@@ -4,10 +4,10 @@
  *  Created on: Sep 23, 2024
  *      Author: MSIFPT
  */
-#include "Exc1.h"
+#include "Exc2.h"
 
 int LED = 1;
-void Exc1_init() {
+void Exc2_init() {
 	HAL_GPIO_WritePin(GPIOB, SEG0_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG1_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG2_Pin, SET);
@@ -17,20 +17,35 @@ void Exc1_init() {
 	HAL_GPIO_WritePin(GPIOB, SEG6_Pin, SET);
 	HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
 	HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, DOT_Pin, SET);
 	LED = 1;
 }
 
-void Exc1_run() {
+void Exc2_run() {
 	if (LED == 1) {
+		HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
 		HAL_GPIO_WritePin(GPIOA, EN0_Pin, RESET);
-		HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
 		display7SEG(1);
 		LED = 2;
 	}
-	else {
+	else if(LED == 2) {
 		HAL_GPIO_WritePin(GPIOA, EN0_Pin, SET);
 		HAL_GPIO_WritePin(GPIOA, EN1_Pin, RESET);
 		display7SEG(2);
+		LED = 3;
+	}
+	else if (LED == 3) {
+		HAL_GPIO_WritePin(GPIOA, EN1_Pin, SET);
+		HAL_GPIO_WritePin(GPIOA, EN2_Pin, RESET);
+		display7SEG(3);
+		LED = 4;
+	}
+	else {
+		HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
+		HAL_GPIO_WritePin(GPIOA, EN3_Pin, RESET);
+		display7SEG(0);
 		LED = 1;
 	}
 }
@@ -57,4 +72,8 @@ void display7SEG(int num) {
 	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, (segments[num] & 0x10) ? GPIO_PIN_SET : GPIO_PIN_RESET);
 	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, (segments[num] & 0x20) ? GPIO_PIN_SET : GPIO_PIN_RESET);
 	    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, (segments[num] & 0x40) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
+void DOT_run() {
+	HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
 }

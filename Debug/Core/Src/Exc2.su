@@ -1,0 +1,4 @@
+Exc2.c:10:6:Exc2_init	8	static
+Exc2.c:26:6:Exc2_run	8	static
+Exc2.c:53:6:display7SEG	32	static
+Exc2.c:77:6:DOT_run	8	static
