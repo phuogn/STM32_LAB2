@@ -12,8 +12,9 @@
 
 #endif /* SRC_EXC1_H_ */
 
-void Exc4_init();
+void Exc_init();
 //void Exc3_run();
 void display7SEG(int num);
 void DOT_run();
 void update7SEG ( int index );
+void updateClockBuffer(int hour, int minute);

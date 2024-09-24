@@ -20,7 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-#include "Exc4.h"
+#include "Exc5-8.h"
 #include "timer.h"
 /* USER CODE END Includes */
 
@@ -93,18 +93,28 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Exc4_init();
-  setTimer(0,1000);
-  setTimer(1,1000);
+  Exc_init();
+  setTimer(0,100);
   int index = 0;
+  int hour = 15, minute = 8, second = 50;
   while (1)
   {
 	  if (timer_flag[0] == 1) {
-		  setTimer(0,1000);
+		  setTimer(0,100);
+		  second++;
+		  if (second >= 60) {
+			  second = 0;
+			  minute++;
+		  }
+		  if (minute >= 60) {
+			  minute = 0;
+			  hour++;
+		  }
+		  if (hour >= 24) {
+			  hour = 0;
+		  }
+		  updateClockBuffer(hour, minute);
 		  update7SEG(index++);
-	  }
-	  if (timer_flag[1] == 1) {
-		  setTimer(1,1000);
 		  DOT_run();
 	  }
 	  if (index >= 4) index = 0;
