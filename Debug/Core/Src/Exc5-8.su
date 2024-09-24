@@ -1,0 +1,5 @@
+Exc5-8.c:10:6:Exc_init	8	static
+Exc5-8.c:60:6:display7SEG	32	static
+Exc5-8.c:84:6:DOT_run	8	static
+Exc5-8.c:92:6:updateClockBuffer	16	static
+Exc5-8.c:99:6:update7SEG	16	static

@@ -4,10 +4,10 @@
  *  Created on: Sep 23, 2024
  *      Author: MSIFPT
  */
-#include "Exc4.h"
+#include "Exc5-8.h"
 
-int LED = 1;
-void Exc4_init() {
+
+void Exc_init() {
 	HAL_GPIO_WritePin(GPIOB, SEG0_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG1_Pin, SET);
 	HAL_GPIO_WritePin(GPIOB, SEG2_Pin, SET);
@@ -20,7 +20,14 @@ void Exc4_init() {
 	HAL_GPIO_WritePin(GPIOA, EN2_Pin, SET);
 	HAL_GPIO_WritePin(GPIOA, EN3_Pin, SET);
 	HAL_GPIO_WritePin(GPIOA, DOT_Pin, SET);
-	LED = 1;
+	HAL_GPIO_WritePin(GPIOA, ENM0_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM1_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM2_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM3_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM4_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM5_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM6_Pin, SET);
+	HAL_GPIO_WritePin(GPIOA, ENM7_Pin, SET);
 }
 
 //void Exc3_run() {
@@ -80,9 +87,16 @@ void DOT_run() {
 
 const int MAX_LED = 4;
 int index_led = 0;
-int led_buffer [4] = {1 , 2 , 3 , 4};
+int led_buffer [4] = {0, 0, 0, 0};
 
-void update7SEG ( int index ) {
+void updateClockBuffer(int hour, int minute) {
+	led_buffer[0] = hour/10;
+	led_buffer[1] = hour%10;
+	led_buffer[2] = minute/10;
+	led_buffer[3] = minute%10;
+}
+
+void update7SEG (int index ) {
 	switch ( index ) {
 		case 0:
 			display7SEG(led_buffer[0]);
