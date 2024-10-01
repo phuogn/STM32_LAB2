@@ -13,3 +13,4 @@
 #endif /* SRC_EXC9_H_ */
 
 void updateLEDMatrix(int index);
+void displayCol(int col);
