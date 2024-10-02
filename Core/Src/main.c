@@ -94,13 +94,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   Exc_init();
-  setTimer(0,100);
+  setTimer(0,500);
+  setTimer(1,1000);
+  setTimer(2,500);
   int index = 0;
   int hour = 15, minute = 8, second = 50;
   while (1)
   {
 	  if (timer_flag[0] == 1) {
-		  setTimer(0,100);
+		  setTimer(0,1000);
 		  second++;
 		  if (second >= 60) {
 			  second = 0;
@@ -113,11 +115,17 @@ int main(void)
 		  if (hour >= 24) {
 			  hour = 0;
 		  }
+	  }
+	  if (timer_flag[2] == 1) {
+		  setTimer(2,250);
 		  updateClockBuffer(hour, minute);
 		  update7SEG(index++);
+		  index = index >= 4 ? 0 : index;
+	  }
+	  if (timer_flag[1] == 1) {
+		  setTimer(1,1000);
 		  DOT_run();
 	  }
-	  if (index >= 4) index = 0;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
