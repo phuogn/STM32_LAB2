@@ -98,6 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   Exc_init();
   setTimer(0,500);
+  setTimer(1,500);
   int index = 0;
   int count = 0;
   int hour = 15, minute = 8, second = 50;
@@ -119,11 +120,14 @@ int main(void)
 		  }
 		  updateClockBuffer(hour, minute);
 		  update7SEG(index++);
+		  index = index >= 4 ? 0 : index;
 		  DOT_run();
+	  }
+	  if (timer_flag[1] == 1) {
+		  setTimer(1,500);
 		  updateLEDMatrix(count++);
 		  count = count >= 8 ? 0 : count;
 	  }
-	  if (index >= 4) index = 0;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
