@@ -95,7 +95,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   Exc_init();
   setTimer(0,500);
-  setTimer(1,1000);
+  setTimer(1,500);
   setTimer(2,500);
   int index = 0;
   int hour = 15, minute = 8, second = 50;
